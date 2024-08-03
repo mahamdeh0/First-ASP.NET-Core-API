@@ -5,13 +5,13 @@
 </p>
 
 <div align="center">
-  <img src="https://github.com/mahamdeh0/First-ASP.NET-Core-API/blob/main/assets/aspnet-core-logo.png" alt="ASP.NET Core Logo" width="150" height="150" />
+  <img src="https://skillicons.dev/icons?i=dotnet,swagger&perline=5" />
 </div>
 
 <h2 align="center">Learning Plan 📚</h2>
 
 <p align="center">
-  Follow this step-by-step guide based on the YouTube tutorial series by DCI - DotNet & JavaScript.
+  Follow this step-by-step guide.
 </p>
 
 ### **1. Introduction to ASP.NET Core API**
