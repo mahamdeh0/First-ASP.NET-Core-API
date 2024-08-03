@@ -1,11 +1,13 @@
+using FirstASP.NETCoreAPI;
 using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
 using WebApplication5.Filter;
 using WebApplication5.middleware;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Configuration.AddJsonFile("config.json");
 // Add services to the container.
+builder.Services.Configure<AttachmentOptions>(builder.Configuration.GetSection("Attachments"));
 
 builder.Services.AddControllers(option => {
 
@@ -17,7 +19,7 @@ builder.Services.AddControllers(option => {
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbcontext>(options =>
-    options.UseSqlServer("server=MAHAMDEH\\SQLEXPRESS;database=CRUD;integrated security=true;trust server certificate=true"));
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefultConnection"]));
 
 
 var app = builder.Build();
