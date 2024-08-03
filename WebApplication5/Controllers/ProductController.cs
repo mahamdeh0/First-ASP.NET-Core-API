@@ -4,12 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
 using System.Threading.Tasks;
 using WebApplication5.Filter;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication5.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     [LogSensitiveActionAttribute]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly ApplicationDbcontext _dbContext;

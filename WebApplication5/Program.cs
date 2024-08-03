@@ -1,4 +1,6 @@
 using FirstASP.NETCoreAPI;
+using FirstASP.NETCoreAPI.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 using WebApplication5.Data;
 using WebApplication5.Filter;
@@ -28,7 +30,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbcontext>(options =>
     options.UseSqlServer(builder.Configuration["ConnectionStrings:DefultConnection"]));
 
-
+builder.Services.AddAuthentication().AddScheme<AuthenticationSchemeOptions , BasicAuthenticationHandler>("Basic", null);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
