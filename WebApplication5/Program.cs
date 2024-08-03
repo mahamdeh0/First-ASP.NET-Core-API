@@ -6,6 +6,13 @@ using WebApplication5.middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("config.json");
+
+builder.Services.AddLogging(cfg =>
+{
+    cfg.AddDebug();
+    cfg.AddConsole();
+});
+
 // Add services to the container.
 builder.Services.Configure<AttachmentOptions>(builder.Configuration.GetSection("Attachments"));
 

@@ -1,8 +1,4 @@
 {
-  "Logging": {
-    "LogLevel": {
-      "Defult": "Error"
-    }
-  },
+
   "TestKey": "Test Value"
 }

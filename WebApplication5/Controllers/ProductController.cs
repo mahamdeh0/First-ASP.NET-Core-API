@@ -13,10 +13,12 @@ namespace WebApplication5.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ApplicationDbcontext _dbContext;
+        private readonly ILogger<ProductController> logger;
 
-        public ProductController(ApplicationDbcontext dbContext)
+        public ProductController(ApplicationDbcontext dbContext , ILogger<ProductController> logger)
         {
             _dbContext = dbContext;
+            this.logger = logger;
         }
 
         [HttpPost]
@@ -60,10 +62,14 @@ namespace WebApplication5.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
+            logger.LogDebug("Getting Product #" + id);
+
             var product = await _dbContext.Set<Product>().FindAsync(id);
 
             if (product == null)
             {
+                logger.LogWarning("Product with ID #{id} not found." + id);
+
                 return NotFound($"Product with ID {id} not found.");
             }
 
@@ -80,6 +86,7 @@ namespace WebApplication5.Controllers
 
             if (product == null)
             {
+                logger.LogWarning("Product with ID #{id} not found." + id);
                 return NotFound($"Product with ID {id} not found.");
             }
 
